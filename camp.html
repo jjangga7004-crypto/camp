@@ -88,16 +88,18 @@ h3{font-size:clamp(19px,2.3vw,22px)}
 /* ===== nav ===== */
 header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 header.nav.scrolled{border-bottom-color:var(--line);background:rgba(255,255,255,.94)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{font-weight:900;font-size:21px;letter-spacing:-.04em;display:flex;align-items:center;gap:7px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font-weight:900;font-size:21px;letter-spacing:-.04em;display:flex;align-items:center;gap:7px;white-space:nowrap;flex:none}
 .nav nav{display:flex;gap:26px}
-.nav nav a{font-size:15px;color:var(--mut);font-weight:700;transition:color .2s}
+.nav nav a{font-size:15px;color:var(--mut);font-weight:700;transition:color .2s;white-space:nowrap}
 .nav nav a:hover{color:var(--ink)}
 .btn.sm{padding:11px 19px;font-size:14.5px}
 .hamb{display:none;width:42px;height:42px;border:1px solid var(--line-2);border-radius:12px;background:#fff;cursor:pointer;align-items:center;justify-content:center}
 .hamb span,.hamb span::before,.hamb span::after{content:"";display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:.25s}
 .hamb span::before{position:absolute;top:-6px}.hamb span::after{position:absolute;top:6px}
-@media(max-width:880px){.nav nav{display:none}.hamb{display:inline-flex}}
+@media(max-width:1060px){.nav nav{display:none}.hamb{display:inline-flex}}
+@media(max-width:1260px){.nav nav{gap:17px}}
+.nav .navbtns{display:flex;align-items:center;gap:8px;flex:none}
 .msheet{position:fixed;inset:0;z-index:60;background:rgba(30,18,12,.34);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.25s}
 .msheet.open{opacity:1;pointer-events:auto}
 .msheet .card{position:absolute;top:0;right:0;height:100%;width:min(82vw,330px);background:#fff;padding:24px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:.28s}
@@ -208,7 +210,21 @@ header.nav.scrolled{border-bottom-color:var(--line);background:rgba(255,255,255,
 .feat{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(20px,3vw,38px);align-items:center;margin-top:34px}
 @media(max-width:860px){.feat{grid-template-columns:1fr;gap:24px}}
 
-/* korean */
+/* special */
+#special .who{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+#special .who li{position:relative;padding-left:26px;font-size:15px;color:var(--ink-2);line-height:1.6}
+#special .who li::before{content:"✓";position:absolute;left:0;top:-1px;color:var(--deep);font-weight:900}
+#special .soon{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:var(--mut-2);background:var(--soft-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 11px;margin-left:7px}
+
+/* korean — 초록 테마 (사탐과 구분) */
+#korean{
+  --fire:#20B278;--fire-2:#35C68C;--deep:#0E8A57;--ember:#5AD3A3;
+  --soft:#E4F7EE;--soft-2:#F1FBF6;
+  background:#F2FAF6
+}
+.btn.kr{background:linear-gradient(135deg,#35C68C,#0E8A57);box-shadow:0 14px 30px -12px rgba(14,138,87,.55)}
+.btn.kr:hover{box-shadow:0 20px 40px -12px rgba(14,138,87,.65)}
+.msheet a.krlink{color:#0E8A57;font-weight:800}
 #korean .kq{margin:28px 0 0;padding:20px 24px;border-left:4px solid var(--fire);background:#fff;border-radius:0 var(--radius-sm) var(--radius-sm) 0;box-shadow:var(--shadow-sm);font-size:clamp(16px,2vw,18.5px);font-weight:700;color:var(--ink-2);line-height:1.68}
 #korean .kq b{color:var(--deep)}
 #korean .knote{margin:20px 0 0;color:var(--mut);font-size:15.5px;line-height:1.78}
@@ -329,14 +345,17 @@ footer.ft a{color:var(--deep);font-weight:700}
     <nav>
       <a href="#why">왜 8시간</a>
       <a href="#course">2단계 코스</a>
+      <a href="#special">사문 특강</a>
       <a href="#compare">인강 비교</a>
       <a href="#loop">진행 방식</a>
       <a href="#data">작년 데이터</a>
       <a href="#parents">학부모님께</a>
-      <a href="#korean">국어</a>
       <a href="#info">시간표·수강료</a>
     </nav>
-    <a href="#apply" class="btn sm">전화상담 신청</a>
+    <div class="navbtns">
+      <a href="#korean" class="btn sm kr">📗 국어</a>
+      <a href="#apply" class="btn sm">전화상담 신청</a>
+    </div>
     <button class="hamb" id="hamb" aria-label="메뉴"><span></span></button>
   </div>
 </header>
@@ -346,12 +365,13 @@ footer.ft a{color:var(--deep);font-weight:700}
     <button class="x" id="mclose" aria-label="닫기">×</button>
     <a href="#why">왜 8시간</a>
     <a href="#course">2단계 코스</a>
+    <a href="#special">사문 특강</a>
     <a href="#compare">인강 비교</a>
     <a href="#loop">진행 방식</a>
     <a href="#content">자체 콘텐츠</a>
     <a href="#data">작년 데이터</a>
     <a href="#parents">학부모님께</a>
-    <a href="#korean">불꽃캠프 국어</a>
+    <a href="#korean" class="krlink">📗 불꽃캠프 국어</a>
     <a href="#info">시간표·수강료</a>
     <a href="#apply" class="btn">전화상담 신청</a>
   </div>
@@ -455,13 +475,13 @@ footer.ft a{color:var(--deep);font-weight:700}
         <div class="num">1</div>
         <h3>4주 완성 1:1 과외</h3>
         <div class="role">전달 — 개념 + 기출 마감</div>
-        <p style="color:var(--mut);margin:0;font-size:15.5px">인강 120강 분량의 개념·기출을 2시간×4회로 끝냅니다. 압축이 아니라 핵심만 추린 것입니다. 하루 30분 숙제만 하면 됩니다.</p>
+        <p style="color:var(--mut);margin:0;font-size:15.5px">인강으로 들으면 <b>개념 30강 + 기출 30강, 총 60강</b> 분량입니다. 이걸 2시간×4회, <b>8시간 안에 압축</b>합니다. 요약정리가 아니라 거품을 뺀 것입니다. 잡소리·썰풀이 없이 필요한 내용만 나갑니다. 하루 30분 숙제만 하면 됩니다.</p>
         <ul>
           <li>주 1회 2시간 · 총 4회</li>
           <li>학생별 약점 진단 + 맞춤 커리큘럼</li>
           <li>대면 / 화상 모두 가능</li>
         </ul>
-        <div class="price">대면 <b>80만</b> · 화상 <b>60만</b></div>
+        <div class="price">대면 <b>120만</b> · 화상 <b>60만</b></div>
       </div>
       <div class="arrow">→</div>
       <div class="stage s2">
@@ -475,6 +495,35 @@ footer.ft a{color:var(--deep);font-weight:700}
           <li>추천: 전 범위 1회독 + 모의 4등급 이상</li>
         </ul>
         <div class="price">월 <b>50만</b> · 두 과목 <b>80만</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL -->
+<section class="section" id="special">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="eyebrow">사문 특강 — 단기 속성</span>
+      <h2>개념이 아예 없다면,<br>3회로 한 바퀴 먼저 돌립니다.</h2>
+      <p class="lead">1:1 과외의 4주 커리큘럼을 <b>4시간 × 3회</b>로 다시 짠 단체 특강입니다. 사탐런이라 아무것도 모르거나, 예전에 한 개념이 가물가물한 학생이 <b>빠르게 전 범위를 훑고</b> 불꽃캠프로 넘어가기 위한 과정입니다.</p>
+    </div>
+    <div class="infogrid" style="margin-top:24px">
+      <div class="card-box ops">
+        <div class="h">진행 안내</div>
+        <div class="row"><span>과목</span><span>사회문화<span class="soon">생활과윤리 준비 중</span></span></div>
+        <div class="row"><span>일정</span><span>일요일 13:00 ~ 17:00</span></div>
+        <div class="row"><span>구성</span><span>4시간 × 총 3회</span></div>
+        <div class="row"><span>장소</span><span>대치동 탑스터디</span></div>
+      </div>
+      <div class="card-box ops">
+        <div class="h">이런 학생에게</div>
+        <ul class="who">
+          <li>과탐에서 사탐으로 넘어온 <b>사탐런</b> 학생</li>
+          <li>개념을 한 번도 제대로 본 적 없는 <b>완전 노베이스</b></li>
+          <li>예전에 했지만 <b>가물가물해서 처음부터</b> 다시 빠르게 돌리고 싶은 학생</li>
+          <li>불꽃캠프에 들어가기 전 <b>전 범위 1회독</b>이 필요한 학생</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -805,6 +854,10 @@ footer.ft a{color:var(--deep);font-weight:700}
       <div class="slot"><div class="d">토요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
       <div class="slot"><div class="d">일요일</div><div class="t">09시</div><div class="x">약 4시간</div></div>
     </div>
+    <div class="ttl">사문 특강 — 단기 속성 (4시간 × 3회)</div>
+    <div class="tt">
+      <div class="slot"><div class="d">일요일</div><div class="t">13시 ~ 17시</div><div class="x">약 4시간 · 총 3회</div></div>
+    </div>
     <div class="ttl">국어 — 이어진 T</div>
     <div class="tt">
       <div class="slot"><div class="d">일요일</div><div class="t">18시 ~ 22시</div><div class="x">약 4시간 · 5명 한정</div></div>
@@ -815,6 +868,7 @@ footer.ft a{color:var(--deep);font-weight:700}
         <div class="row"><span>불꽃캠프 (1과목 · 월)</span><span>50만원</span></div>
         <div class="row"><span>불꽃캠프 (두 과목 · 월)</span><span>80만원</span></div>
         <div class="row"><span>불꽃캠프 국어 (월 · 5명 한정)</span><span>50만원</span></div>
+        <div class="row"><span>사문 특강 (4h×3회 · 단기)</span><span>상담 문의</span></div>
         <div class="row"><span>1:1 과외 · 대면 (2h×4)</span><span>120만원</span></div>
         <div class="row"><span>1:1 과외 · 화상 (1.5h×4)</span><span>60만원</span></div>
       </div>
