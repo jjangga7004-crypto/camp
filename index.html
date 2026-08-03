@@ -214,8 +214,9 @@ header.nav.scrolled{border-bottom-color:var(--line);background:rgba(255,255,255,
 #special .who{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
 #special .who li{position:relative;padding-left:26px;font-size:15px;color:var(--ink-2);line-height:1.6}
 #special .who li::before{content:"✓";position:absolute;left:0;top:-1px;color:var(--deep);font-weight:900}
-#special .rounds{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
-@media(max-width:680px){#special .rounds{grid-template-columns:1fr}}
+#special .rounds{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+@media(max-width:900px){#special .rounds{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){#special .rounds{grid-template-columns:1fr}}
 #special .rd{background:#fff;border:1.5px solid var(--line-2);border-radius:var(--radius);padding:clamp(20px,2.6vw,26px)}
 #special .rd.open{border-color:rgba(255,90,44,.5);background:linear-gradient(165deg,#fff,var(--soft-2));box-shadow:var(--shadow)}
 #special .rd .rt{display:flex;align-items:center;gap:9px;font-size:19px;font-weight:900;letter-spacing:-.025em}
@@ -337,7 +338,7 @@ footer.ft a{color:var(--deep);font-weight:700}
     <nav>
       <a href="#why">왜 8시간</a>
       <a href="#course">2단계 코스</a>
-      <a href="#special">사문 특강</a>
+      <a href="#special">사탐 특강</a>
       <a href="#compare">인강 비교</a>
       <a href="#loop">진행 방식</a>
       <a href="#data">작년 데이터</a>
@@ -357,7 +358,7 @@ footer.ft a{color:var(--deep);font-weight:700}
     <button class="x" id="mclose" aria-label="닫기">×</button>
     <a href="#why">왜 8시간</a>
     <a href="#course">2단계 코스</a>
-    <a href="#special">사문 특강</a>
+    <a href="#special">사탐 특강</a>
     <a href="#compare">인강 비교</a>
     <a href="#loop">진행 방식</a>
     <a href="#content">자체 콘텐츠</a>
@@ -496,7 +497,7 @@ footer.ft a{color:var(--deep);font-weight:700}
 <section class="section" id="special">
   <div class="wrap">
     <div class="kicker">
-      <span class="eyebrow">사문 특강 — 단기 속성</span>
+      <span class="eyebrow">사탐 특강 — 단기 속성</span>
       <h2>개념이 아예 없다면,<br>3회로 한 바퀴 먼저 돌립니다.</h2>
       <p class="lead">1:1 과외의 4주 커리큘럼을 <b>4시간 × 3회</b>로 다시 짠 단체 특강입니다. 사탐런이라 아무것도 모르거나, 예전에 한 개념이 가물가물한 학생이 <b>빠르게 전 범위를 훑고</b> 불꽃캠프로 넘어가기 위한 과정입니다.</p>
     </div>
@@ -507,17 +508,24 @@ footer.ft a{color:var(--deep);font-weight:700}
 
     <div class="rounds">
       <div class="rd">
-        <div class="rt">1반 <span class="bd closed">마감</span></div>
+        <div class="rt">사문 1반 <span class="bd closed">마감</span></div>
         <div class="meta">
           <span><b>8월 2일</b> 개강</span>
           <span>일요일 <b>13:00 ~ 17:00</b></span>
         </div>
       </div>
       <div class="rd open">
-        <div class="rt">2반 <span class="bd open">모집중</span></div>
+        <div class="rt">사문 2반 <span class="bd open">모집중</span></div>
         <div class="meta">
           <span><b>8월 9일</b> 개강</span>
           <span>일요일 <b>18:00 ~ 22:00</b></span>
+        </div>
+      </div>
+      <div class="rd open">
+        <div class="rt">생윤 1반 <span class="bd open">모집중</span></div>
+        <div class="meta">
+          <span><b>8월 8일</b> 개강</span>
+          <span>토요일 <b>18:00 ~ 22:00</b></span>
         </div>
       </div>
     </div>
@@ -525,7 +533,7 @@ footer.ft a{color:var(--deep);font-weight:700}
     <div class="infogrid" style="margin-top:14px">
       <div class="card-box ops">
         <div class="h">진행 안내</div>
-        <div class="row"><span>과목</span><span>사회문화<span class="soon">생활과윤리 준비 중</span></span></div>
+        <div class="row"><span>과목</span><span>사회문화 · 생활과윤리</span></div>
         <div class="row"><span>구성</span><span>4시간 × 총 3회 (12시간)</span></div>
         <div class="row"><span>수강료</span><span>3회 50만원</span></div>
         <div class="row"><span>장소</span><span>대치동 탑스터디</span></div>
@@ -770,17 +778,18 @@ footer.ft a{color:var(--deep);font-weight:700}
       <div class="slot"><div class="d">일요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
       <div class="slot"><div class="d">수요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
     </div>
-    <div class="ttl">사문 특강 — 단기 속성 (4시간 × 3회)</div>
+    <div class="ttl">사탐 특강 — 단기 속성 (4시간 × 3회 · 사문/생윤)</div>
     <div class="tt">
-      <div class="slot"><div class="d">1반 · 일요일</div><div class="t">13시 ~ 17시</div><div class="x">8/2 개강 · 마감</div></div>
-      <div class="slot"><div class="d">2반 · 일요일</div><div class="t">18시 ~ 22시</div><div class="x">8/9 개강 · 모집중</div></div>
+      <div class="slot"><div class="d">사문 1반 · 일요일</div><div class="t">13시 ~ 17시</div><div class="x">8/2 개강 · 마감</div></div>
+      <div class="slot"><div class="d">사문 2반 · 일요일</div><div class="t">18시 ~ 22시</div><div class="x">8/9 개강 · 모집중</div></div>
+      <div class="slot"><div class="d">생윤 1반 · 토요일</div><div class="t">18시 ~ 22시</div><div class="x">8/8 개강 · 모집중</div></div>
     </div>
     <div class="infogrid">
       <div class="card-box ops">
         <div class="h">수강료</div>
         <div class="row"><span>불꽃캠프 (1과목 · 월)</span><span>50만원</span></div>
         <div class="row"><span>불꽃캠프 (두 과목 · 월)</span><span>80만원</span></div>
-        <div class="row"><span>사문 특강 (4h×3회 · 총 12시간)</span><span>50만원</span></div>
+        <div class="row"><span>사탐 특강 (4h×3회 · 총 12시간)</span><span>50만원</span></div>
         <div class="row"><span>1:1 과외 · 대면 (2h×4)</span><span>상담 후 결정</span></div>
         <div class="row"><span>1:1 과외 · 화상 (1.5h×4)</span><span>60만원</span></div>
       </div>
