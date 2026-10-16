@@ -24,9 +24,13 @@ if(location.hash){
 }
 
 // 수능 D-day (2026-11-19, KST). 수능 당일이 지나면 시즌 문구를 숨긴다.
+// 다음 해엔 SUNEUNG_DATE 하나만 바꾸면 D-N 배지·"수능 N일 전" 문구가 전부 따라온다.
+const SUNEUNG_DATE='2026-11-19';
 (function(){
-  const exam=Date.UTC(2026,10,18,15); // 11/19 00:00 KST
+  const [y,m,d]=SUNEUNG_DATE.split('-').map(Number);
+  const exam=Date.UTC(y,m-1,d-1,15); // 수능일 00:00 KST (=전날 15:00 UTC)
   const days=Math.ceil((exam-Date.now())/864e5);
-  if(days<0){document.querySelectorAll('.dday,.promo .p0,#special .nowline').forEach(el=>el.remove());return;}
+  if(days<0){document.querySelectorAll('.dday,.promo .p0,#special .nowline,[data-dday-phrase]').forEach(el=>el.remove());return;}
   document.querySelectorAll('[data-dday]').forEach(el=>el.textContent=days===0?'D-DAY':'D-'+days);
+  document.querySelectorAll('[data-dday-phrase]').forEach(el=>el.textContent=days===0?'수능 당일':'수능 '+days+'일 전');
 })();
