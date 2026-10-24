@@ -30,7 +30,20 @@ const SUNEUNG_DATE='2026-11-19';
   const [y,m,d]=SUNEUNG_DATE.split('-').map(Number);
   const exam=Date.UTC(y,m-1,d-1,15); // 수능일 00:00 KST (=전날 15:00 UTC)
   const days=Math.ceil((exam-Date.now())/864e5);
-  if(days<0){document.querySelectorAll('.dday,.promo .p0,#special .nowline,[data-dday-phrase]').forEach(el=>el.remove());return;}
+  // 수능이 지나면 시즌 문구를 걷어낸다. [data-dday-after] 요소는 지우지 않고 시즌 중립 문구로 교체한다
+  // (헤드라인처럼 지워버리면 안 되는 자리를 위한 것).
+  if(days<0){
+    document.querySelectorAll('[data-dday-after]').forEach(el=>{el.innerHTML=el.dataset.ddayAfter});
+    document.querySelectorAll('.dday,.promo .p0,#special .nowline,[data-dday-phrase]').forEach(el=>el.remove());
+    return;
+  }
   document.querySelectorAll('[data-dday]').forEach(el=>el.textContent=days===0?'D-DAY':'D-'+days);
   document.querySelectorAll('[data-dday-phrase]').forEach(el=>el.textContent=days===0?'수능 당일':'수능 '+days+'일 전');
+  // 헤드라인 안의 '남은 일수' 숫자. 날짜를 하드코딩하지 않고 SUNEUNG_DATE에서 매일 자동으로 줄어든다.
+  // 수능 당일(0일)은 "0일만 해도 다르다"가 되어버리므로 숫자를 채우지 않고 휴식 문구로 교체한다.
+  if(days===0){
+    document.querySelectorAll('[data-dday-after]').forEach(el=>{el.innerHTML=el.dataset.ddayAfter});
+  }else{
+    document.querySelectorAll('[data-dday-num]').forEach(el=>el.textContent=days);
+  }
 })();

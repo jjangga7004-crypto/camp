@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<!-- title·description에 D-day 숫자를 넣지 않는다 (JS가 못 고치는 자리라 매일 틀려진다). -->
 <title>불꽃캠프 시간표·수강료·상담 | 대치동 사탐 실전반</title>
 <meta name="description" content="불꽃캠프 대면·온라인 시간표와 수강료, 상담 신청, 참여 안내를 확인하세요. 사회문화·생활과윤리·윤리와사상 실전 모의고사·개별 피드백·재시험." />
 <meta property="og:title" content="불꽃캠프 시간표·수강료·상담 | 대치동 사탐 실전반" />
@@ -14,114 +15,208 @@
 <meta property="og:image:height" content="630" />
 <meta name="twitter:image" content="https://jjangga7004-crypto.github.io/camp/camp-og.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#FF5A2C" />
+<meta name="theme-color" content="#FFFDFA" />
 <link rel="canonical" href="https://jjangga7004-crypto.github.io/camp/info.html" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<!-- 컴포넌트 스타일은 전부 공용 style.css 에 있다. 아래 <style> 은 이 페이지에만 있는
+     배치 보정(가운데 정렬·간격)만 담는다. 공용 규칙을 여기서 재정의하지 않는다. -->
 <link rel="stylesheet" href="style.css" />
 <style>
-.camp-hero .sub{max-width:720px}.camp-hero .cta-row{margin-top:26px}
-.camp-note{font-size:13px;color:var(--mut);margin:18px 0 0;max-width:720px}
-.camp-links{display:flex;gap:14px 24px;flex-wrap:wrap;margin-top:26px;font-size:15px;font-weight:750;color:var(--deep)}
-.camp-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.camp-summary{max-width:760px;margin:22px 0 0;color:var(--ink-2)}
-.camp-hero .dday{margin:28px 0 0;max-width:760px}
-#loop,#course,#why,#tutor{scroll-margin-top:90px}
-.camp-legacy{margin-top:26px}.camp-legacy summary{cursor:pointer;font-weight:750;padding:18px 0}
-.camp-legacy .ans{font-size:15px;color:var(--mut);max-width:760px;padding-bottom:10px}
-.camp-legacy .ans p{margin:0 0 12px}
-@media(max-width:580px){.camp-cta .btn,.camp-hero .cta-row .btn{width:100%}.nav .navbtns .btn:not(.kr){display:none}}
+/* 페이지 머리 — 공용 .eyebrow 는 아래 여백이 없다(히어로에서만 필요) */
+#top .eyebrow{margin-bottom:16px}
+/* 머리글의 마지막 문장이 바로 아래 시간표를 가리키므로 둘 사이를 좁힌다 */
+#top .wrap{padding-bottom:clamp(24px,3.2vw,40px)}
+#info{padding-top:clamp(30px,4vw,52px)}
+/* 시간표 섹션: 첫 라벨은 섹션 패딩 위에 겹쳐 띄우지 않는다 */
+#info .ttl:first-child{margin-top:0}
+#info .micro{margin-top:14px}
+/* 수강료 카드(.infogrid 첫 칸)의 금액은 '40만/원' 으로 쪼개지지 않게.
+   둘째 칸(운영 안내)은 값이 길어 nowrap 을 걸면 좁은 화면에서 넘친다 — 첫 칸만. */
+#info .infogrid>.ops:first-child .row span:last-child{white-space:nowrap}
+/* 상담 섹션: 가운데 정렬 변형 */
+#apply .kick,#apply .kick .lead{margin-inline:auto}
+#apply .steps{margin-top:clamp(28px,3.6vw,38px)}
+#apply .micro{margin-top:16px}
+#apply .textlinks{justify-content:center}
+/* 상담 패널 안의 버튼 두 개는 가로로 늘어놓지 않고 세로로 쌓는다 */
+.consult .cta{flex-direction:column;align-items:stretch;max-width:430px;margin:6px auto 0}
+/* 전화번호가 들어간 긴 버튼은 nowrap 이라 아주 좁은 화면에서만 글자를 줄인다 */
+@media(max-width:400px){.consult .cta .btn.lg{padding-inline:14px;font-size:15.5px}}
 </style>
 </head>
 <body>
+
 <div class="topbar"><div class="wrap">
-  <span><b>전) 김과외 사탐 전국 1위</b></span><span class="dot"></span>
-  <span class="hide-s">실전 모의고사 · 1:1 피드백 · 재시험</span><span class="dot hide-s"></span>
-  <span>대치동 탑스터디</span>
+  <span><b>실전 모의고사</b> · 1:1 피드백 · 재시험</span><span class="dot hide-s"></span>
+  <span class="hide-s">사회문화 · 생활과윤리 · 윤리와사상</span><span class="dot"></span>
+  <span>한티역 바로 옆</span>
 </div></div>
+
 <header class="nav" id="nav"><div class="wrap">
   <a href="index.html" class="brand">🔥 불꽃캠프</a>
   <nav>
-      <a href="program.html">불꽃캠프 프로그램</a>
-      <a href="compare.html">인강 비교</a>
-      <a href="proof.html">작년 데이터</a>
-      <a href="parents.html">학부모님께</a>
-      <a href="info.html" class="on">시간표·수강료</a>
+    <a href="program.html">불꽃캠프 프로그램</a>
+    <a href="compare.html">인강 비교</a>
+    <a href="proof.html">작년 데이터</a>
+    <a href="parents.html">학부모님께</a>
+    <a href="info.html" class="on">시간표·수강료</a>
   </nav>
   <div class="navbtns">
     <a href="korean.html" class="btn sm kr">📗 국어</a>
     <a href="https://dune-teal-3ad.notion.site/d9f8cd6d2b514989b4f78d275456f785" target="_blank" rel="noopener" class="btn sm">캠프 상담 신청</a>
   </div>
-  <button class="hamb" id="hamb" aria-label="메뉴"><span></span></button>
+  <button class="hamb" id="hamb" aria-label="메뉴 열기" aria-controls="msheet" aria-haspopup="dialog" aria-expanded="false"><span></span></button>
 </div></header>
-<div class="msheet" id="msheet"><div class="card">
-  <button class="x" id="mclose" aria-label="닫기">×</button>
-      <a href="program.html">불꽃캠프 프로그램</a>
-      <a href="compare.html">인강 비교</a>
-      <a href="proof.html">작년 데이터</a>
-      <a href="parents.html">학부모님께</a>
-      <a href="info.html" class="on">시간표·수강료</a>
+
+<div class="msheet" id="msheet"><div class="card" role="dialog" aria-label="메뉴">
+  <button class="x" id="mclose" aria-label="메뉴 닫기">×</button>
+  <a href="program.html">불꽃캠프 프로그램</a>
+  <a href="compare.html">인강 비교</a>
+  <a href="proof.html">작년 데이터</a>
+  <a href="parents.html">학부모님께</a>
+  <a href="info.html" class="on">시간표·수강료</a>
   <a href="korean.html" class="krlink">📗 불꽃캠프 국어</a>
   <a href="https://www.instagram.com/sparkcamp_2026/" target="_blank" rel="noopener">인스타그램 @sparkcamp_2026</a>
   <a href="https://dune-teal-3ad.notion.site/d9f8cd6d2b514989b4f78d275456f785" target="_blank" rel="noopener" class="btn">캠프 상담 신청</a>
 </div></div>
+
 <main>
-<section class="section" id="info"><div class="wrap">
-  <div class="kicker"><span class="eyebrow">불꽃캠프 시간표 · 수강료</span><h1 style="font-size:clamp(30px,4.4vw,44px)">나에게 맞는 시간에,<br>불꽃캠프로 실전을 준비합니다.</h1><p class="lead">아래 타임 중 택 1(각 약 4시간)이고, 결석해도 다른 타임으로 자유 보강이 가능합니다.</p></div>
-  <div class="ttl">불꽃캠프 — 사회문화 · 생활과윤리 · 윤리와사상 (총 7개 반)</div>
-  <div class="tt">
-    <div class="slot"><div class="d">토요일</div><div class="t">09시</div><div class="x">약 4시간</div></div>
-    <div class="slot"><div class="d">토요일</div><div class="t">13시</div><div class="x">약 4시간</div></div>
-    <div class="slot"><div class="d">토요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
-    <div class="slot"><div class="d">일요일</div><div class="t">09시</div><div class="x">약 4시간</div></div>
-    <div class="slot"><div class="d">일요일</div><div class="t">13시</div><div class="x">약 4시간</div></div>
-    <div class="slot"><div class="d">일요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
-    <div class="slot"><div class="d">수요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
+
+<!-- ============ 01 · 페이지 머리 ============ -->
+<section class="hero camp-hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">불꽃캠프 시간표 · 수강료</span>
+    <h1>나에게 맞는 시간에,<br>불꽃캠프로 실전을 준비합니다.</h1>
+    <p class="sub">아래 타임 중 택 1(각 약 4시간)이고, 결석해도 다른 타임으로 자유 보강이 가능합니다.</p>
   </div>
-  <div class="ttl">온라인 불꽃캠프</div>
-  <div class="tt">
-    <div class="slot"><div class="d">온라인 · 토요일</div><div class="t">13시 ~ 17시</div><div class="x">월 40만원</div></div>
-    <div class="slot"><div class="d">온라인 생윤 · 일요일</div><div class="t">09시 ~ 13시</div><div class="x">월 40만원</div></div>
+</section>
+
+<!-- ============ 02 · 시간표 · 수강료 · 운영 안내 ============ -->
+<section class="sect" id="info">
+  <div class="wrap">
+    <div class="ttl">불꽃캠프 — 사회문화 · 생활과윤리 · 윤리와사상 (총 7개 반)</div>
+    <div class="tt">
+      <div class="slot"><div class="d">토요일</div><div class="t">09시</div><div class="x">약 4시간</div></div>
+      <div class="slot"><div class="d">토요일</div><div class="t">13시</div><div class="x">약 4시간</div></div>
+      <div class="slot"><div class="d">토요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
+      <div class="slot"><div class="d">일요일</div><div class="t">09시</div><div class="x">약 4시간</div></div>
+      <div class="slot"><div class="d">일요일</div><div class="t">13시</div><div class="x">약 4시간</div></div>
+      <div class="slot"><div class="d">일요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
+      <div class="slot"><div class="d">수요일</div><div class="t">18시</div><div class="x">약 4시간</div></div>
+    </div>
+
+    <div class="ttl">온라인 불꽃캠프</div>
+    <div class="tt">
+      <div class="slot"><div class="d">온라인 · 토요일</div><div class="t">13시 ~ 17시</div><div class="x">월 40만원</div></div>
+      <div class="slot"><div class="d">온라인 생윤 · 일요일</div><div class="t">09시 ~ 13시</div><div class="x">월 40만원</div></div>
+    </div>
+
+    <div class="infogrid">
+      <div class="card-box ops">
+        <div class="h">불꽃캠프 수강료</div>
+        <div class="row"><span>불꽃캠프 (1과목 · 월)</span><span>50만원</span></div>
+        <div class="row"><span>불꽃캠프 (두 과목 · 월)</span><span>80만원</span></div>
+        <div class="row"><span>온라인 불꽃캠프 (토 13~17 / 생윤 일 9~13 · 월)</span><span>40만원</span></div>
+      </div>
+      <div class="card-box ops">
+        <div class="h">운영 안내</div>
+        <div class="row"><span>장소</span><span>한티역 바로 옆 (경산빌딩 5·6F)</span></div>
+        <div class="row"><span>조교</span><span>SKY 전공자 1:4~5</span></div>
+        <div class="row"><span>질의응답</span><span>주 7일 · 24시간</span></div>
+        <div class="row"><span>대상</span><span>고3 · N수생</span></div>
+      </div>
+    </div>
+
+    <p class="micro">서울 강남구 선릉로62길 7, 경산빌딩 5·6층 (한티역 롯데백화점 바로 뒤)</p>
   </div>
-  <div class="infogrid">
-    <div class="card-box ops"><div class="h">불꽃캠프 수강료</div><div class="row"><span>불꽃캠프 (1과목 · 월)</span><span>50만원</span></div><div class="row"><span>불꽃캠프 (두 과목 · 월)</span><span>80만원</span></div><div class="row"><span>온라인 불꽃캠프 (토 13~17 / 생윤 일 9~13 · 월)</span><span>40만원</span></div></div>
-    <div class="card-box ops"><div class="h">운영 안내</div><div class="row"><span>장소</span><span>대치동 탑스터디(경산빌딩 5·6F)</span></div><div class="row"><span>조교</span><span>SKY 전공자 1:4~5</span></div><div class="row"><span>질의응답</span><span>주 7일 · 24시간</span></div><div class="row"><span>대상</span><span>고3 · N수생</span></div></div>
+</section>
+
+<!-- ============ 03 · 상담 신청 ============ -->
+<section class="sect cream" id="apply">
+  <div class="wrap">
+    <div class="kick center">
+      <span class="eyebrow">불꽃캠프 상담 신청</span>
+      <h2 class="hd">현재 성적과 막히는 부분부터<br>알려주세요.</h2>
+      <p class="lead">장쌤이 현재 개념 이해도와 최근 시험을 확인하고, 캠프 참여와 필요한 보완 방향을 상담합니다. 과외·특강을 먼저 수강할 필요는 없습니다.</p>
+    </div>
+
+    <div class="steps">
+      <div class="st"><span class="n">1</span>신청서 작성</div>
+      <span class="arr">→</span>
+      <div class="st"><span class="n">2</span>장쌤이 직접 전화</div>
+      <span class="arr">→</span>
+      <div class="st"><span class="n">3</span>참여·보완 방향 상담</div>
+    </div>
+
+    <div class="consult" id="consultWrap">
+      <div class="formhead">
+        <h3>불꽃캠프 상담 신청</h3>
+        <p>전화번호를 남겨주시면 <b>010-9306-5043</b>으로 장쌤이 직접 연락드립니다. 남은 기간, 어떤 공부에 집중할지부터 함께 확인합니다.</p>
+      </div>
+      <div class="cta">
+        <a href="tel:01093065043" class="btn lg">010-9306-5043 바로 전화</a>
+        <a href="https://dune-teal-3ad.notion.site/d9f8cd6d2b514989b4f78d275456f785" target="_blank" rel="noopener" class="btn ghost lg">캠프 상담 신청서 작성하기 <span class="arw">→</span></a>
+      </div>
+      <p class="formnote">신청서를 남겨주시면 장쌤이 직접 전화드립니다.</p>
+    </div>
+
+    <p class="micro center">수능을 준비하는 고3 · N수생을 대상으로 운영합니다.</p>
+
+    <div class="textlinks"><a href="program.html">불꽃캠프 진행 방식 다시 보기 →</a></div>
   </div>
-  <p class="micro" style="margin-top:14px">서울 강남구 선릉로62길 7, 경산빌딩 5·6층 (한티역 롯데백화점 바로 뒤)</p>
-</div></section>
-<section class="section cream" id="apply"><div class="wrap">
-  <div class="kicker center" style="margin:0 auto;align-items:center"><span class="eyebrow">불꽃캠프 상담 신청</span><h2>현재 성적과 막히는 부분부터<br>알려주세요.</h2><p class="lead">장쌤이 현재 개념 이해도와 최근 시험을 확인하고, 캠프 참여와 필요한 보완 방향을 상담합니다. 과외·특강을 먼저 수강할 필요는 없습니다.</p></div>
-  <div class="steps"><div class="st"><span class="n">1</span>신청서 작성</div><span class="arr">→</span><div class="st"><span class="n">2</span>장쌤이 직접 전화</div><span class="arr">→</span><div class="st"><span class="n">3</span>참여·보완 방향 상담</div></div>
-  <div class="consult" id="consultWrap"><div class="formhead"><h3>불꽃캠프 상담 신청</h3><p>전화번호를 남겨주시면 <b>010-9306-5043</b>으로 장쌤이 직접 연락드립니다. 남은 기간, 어떤 공부에 집중할지부터 함께 확인합니다.</p></div>
-    <div style="display:flex;flex-direction:column;gap:12px;max-width:430px;margin:6px auto 0"><a href="tel:01093065043" class="btn lg" style="width:100%">010-9306-5043 바로 전화</a><a href="https://dune-teal-3ad.notion.site/d9f8cd6d2b514989b4f78d275456f785" target="_blank" rel="noopener" class="btn ghost lg" style="width:100%">캠프 상담 신청서 작성하기 →</a></div>
-    <p class="formnote">신청서를 남겨주시면 장쌤이 직접 전화드립니다.</p>
+</section>
+
+<!-- ============ 04 · FAQ ============ -->
+<section class="sect" id="faq">
+  <div class="wrap">
+    <div class="kick">
+      <span class="eyebrow">자주 묻는 질문</span>
+      <h2 class="hd">불꽃캠프가 궁금하다면.</h2>
+    </div>
+
+    <div class="faq">
+      <details open><summary>남은 기간 동안 무엇을 바꿀 수 있나요?</summary><div class="ans">실전 모의고사로 현재 약점을 찾고, 개별 피드백과 오답 교정·재시험을 반복합니다. 반복해서 틀리는 선지, 자료 해석, 시간 배분처럼 학생마다 막히는 부분에 집중합니다. 남은 기간이 모든 학생에게 같은 결과를 보장하는 것은 아니며, 변화의 범위는 현재 수준과 참여도에 따라 달라집니다.</div></details>
+      <details><summary>과외나 특강을 먼저 들어야 하나요?</summary><div class="ans">아닙니다. 현재 주력 운영은 불꽃캠프이며, 과외·특강은 필수 선행 과정이 아닙니다. 개념을 공부한 학생은 캠프 참여부터 상담하고, 개념 보완이 필요하면 현재 상태에 맞는 방법을 별도로 확인합니다.</div></details>
+      <details><summary>불꽃캠프는 누구에게 맞나요?</summary><div class="ans">전 범위를 한 번 공부했고 모의고사 4등급 이상인 학생에게 권장합니다. 개념은 공부했지만 실전 점수가 불안정하거나 혼자 오답을 교정하기 어려운 학생에게 맞는 과정입니다. 개념 학습이 아직 부족하다면 상담에서 필요한 보완부터 확인합니다.</div></details>
+      <details><summary>결석하면 어떻게 되나요?</summary><div class="ans">토·일 여러 타임이 열려 있어, 빠진 주는 다른 타임으로 자유 보강이 가능합니다. 구체적인 참여 가능 시간은 상담에서 확인해 주세요.</div></details>
+      <details><summary>예체능·이과 학생도 참여할 수 있나요?</summary><div class="ans">계열보다 현재 사탐 개념 이해도와 문제 풀이 상태를 기준으로 상담합니다. 최근 시험에서 막힌 부분과 남은 공부 시간을 알려주시면 캠프 참여와 보완 방향을 함께 확인합니다.</div></details>
+      <details><summary>듣던 인강이 있는데, 같이 들어도 되나요?</summary><div class="ans">가능합니다. 불꽃캠프는 실전 모의고사·피드백·재시험을 중심으로 운영하므로, 보던 인강이나 교재를 반드시 바꿀 필요는 없습니다. 부족한 개념은 보완하면서 배운 내용을 문제에 적용하는 연습을 병행합니다.</div></details>
+      <details><summary>결제는 어떻게 하나요? 중간에 그만두면요?</summary><div class="ans">월 단위로 운영해서 길게 묶어두지 않습니다. 불꽃캠프를 해보고 안 맞는 것 같으면 <b>잔여분은 바로 환불</b>해 드립니다. 부담 없이 시작하고, 맞는지 직접 판단하시면 됩니다.</div></details>
+      <details><summary>학부모가 아이 상태를 알 수 있나요?</summary><div class="ans">매주 모의고사 점수와 재시험 기록이 남습니다. 현재 어느 부분에서 막히는지, 무엇을 보완하고 있는지 안내하고 필요하면 학부모님과 직접 소통합니다.</div></details>
+      <details><summary>기존 8시간 과정이나 1:1 과외도 운영하나요?</summary><div class="ans">현재 주력은 불꽃캠프입니다. 기존 1:1 과정은 별도의 보완이 필요한 경우 운영 가능 여부부터 상담합니다. 기존 안내 기준으로 대면은 2시간씩 4회·비용 상담, 화상은 1.5시간씩 4회·60만원이었으며 현재 모집을 보장하는 안내는 아닙니다. 자세한 배경은 <a href="program.html#tutor" class="fire-text">기존 과정 안내</a>에서 확인할 수 있습니다.</div></details>
+    </div>
   </div>
-  <p class="micro center" style="margin-top:16px">수능을 준비하는 고3 · N수생을 대상으로 운영합니다.</p>
-  <div class="camp-links" style="justify-content:center"><a href="program.html">불꽃캠프 진행 방식 다시 보기 →</a></div>
-</div></section>
-<section class="section" id="faq"><div class="wrap">
-  <span class="eyebrow">자주 묻는 질문</span><h2 style="margin-top:14px">불꽃캠프가 궁금하다면.</h2>
-  <div class="faq">
-    <details open><summary>30일 동안 무엇을 바꿀 수 있나요?</summary><div class="ans">실전 모의고사로 현재 약점을 찾고, 개별 피드백과 오답 교정·재시험을 반복합니다. 반복해서 틀리는 선지, 자료 해석, 시간 배분처럼 학생마다 막히는 부분에 집중합니다. 30일이 모든 학생에게 같은 결과를 보장하는 것은 아니며, 변화의 범위는 현재 수준과 참여도에 따라 달라집니다.</div></details>
-    <details><summary>과외나 특강을 먼저 들어야 하나요?</summary><div class="ans">아닙니다. 현재 주력 운영은 불꽃캠프이며, 과외·특강은 필수 선행 과정이 아닙니다. 개념을 공부한 학생은 캠프 참여부터 상담하고, 개념 보완이 필요하면 현재 상태에 맞는 방법을 별도로 확인합니다.</div></details>
-    <details><summary>불꽃캠프는 누구에게 맞나요?</summary><div class="ans">전 범위를 한 번 공부했고 모의고사 4등급 이상인 학생에게 권장합니다. 개념은 공부했지만 실전 점수가 불안정하거나 혼자 오답을 교정하기 어려운 학생에게 맞는 과정입니다. 개념 학습이 아직 부족하다면 상담에서 필요한 보완부터 확인합니다.</div></details>
-    <details><summary>결석하면 어떻게 되나요?</summary><div class="ans">토·일 여러 타임이 열려 있어, 빠진 주는 다른 타임으로 자유 보강이 가능합니다. 구체적인 참여 가능 시간은 상담에서 확인해 주세요.</div></details>
-    <details><summary>예체능·이과 학생도 참여할 수 있나요?</summary><div class="ans">계열보다 현재 사탐 개념 이해도와 문제 풀이 상태를 기준으로 상담합니다. 최근 시험에서 막힌 부분과 남은 공부 시간을 알려주시면 캠프 참여와 보완 방향을 함께 확인합니다.</div></details>
-    <details><summary>듣던 인강이 있는데, 같이 들어도 되나요?</summary><div class="ans">가능합니다. 불꽃캠프는 실전 모의고사·피드백·재시험을 중심으로 운영하므로, 보던 인강이나 교재를 반드시 바꿀 필요는 없습니다. 부족한 개념은 보완하면서 배운 내용을 문제에 적용하는 연습을 병행합니다.</div></details>
-    <details><summary>결제는 어떻게 하나요? 중간에 그만두면요?</summary><div class="ans">월 단위로 운영해서 길게 묶어두지 않습니다. 불꽃캠프를 해보고 안 맞는 것 같으면 <b>잔여분은 바로 환불</b>해 드립니다. 부담 없이 시작하고, 맞는지 직접 판단하시면 됩니다.</div></details>
-    <details><summary>학부모가 아이 상태를 알 수 있나요?</summary><div class="ans">매주 모의고사 점수와 재시험 기록이 남습니다. 현재 어느 부분에서 막히는지, 무엇을 보완하고 있는지 안내하고 필요하면 학부모님과 직접 소통합니다.</div></details>
-    <details><summary>기존 8시간 과정이나 1:1 과외도 운영하나요?</summary><div class="ans">현재 주력은 불꽃캠프입니다. 기존 1:1 과정은 별도의 보완이 필요한 경우 운영 가능 여부부터 상담합니다. 기존 안내 기준으로 대면은 2시간씩 4회·비용 상담, 화상은 1.5시간씩 4회·60만원이었으며 현재 모집을 보장하는 안내는 아닙니다. 자세한 배경은 <a href="program.html#tutor" class="fire-text">기존 과정 안내</a>에서 확인할 수 있습니다.</div></details>
-  </div>
-</div></section>
+</section>
+
 </main>
+
 <footer class="ft"><div class="wrap">
   <div class="brand">🔥 불꽃캠프</div>
-  <div>장주혁(장쌤) · 사회문화 · 생활과윤리 · 윤리와사상 · 대치동 탑스터디 · <a href="tel:01093065043">010-9306-5043</a> · <a href="https://www.instagram.com/sparkcamp_2026/" target="_blank" rel="noopener">@sparkcamp_2026</a></div>
+  <div>장주혁(장쌤) · 사회문화 · 생활과윤리 · 윤리와사상 · 한티역 바로 옆 · <a href="tel:01093065043">010-9306-5043</a> · <a href="https://www.instagram.com/sparkcamp_2026/" target="_blank" rel="noopener">@sparkcamp_2026</a></div>
 </div></footer>
+
 <div class="callbar">
   <a href="tel:01093065043" class="btn ghost">바로 전화</a>
   <a href="https://dune-teal-3ad.notion.site/d9f8cd6d2b514989b4f78d275456f785" target="_blank" rel="noopener" class="btn">캠프 상담 신청</a>
 </div>
+
+<!-- D-day·내비·모바일 메뉴는 전부 공용 app.js 가 한다. SUNEUNG_DATE 는 app.js 한 곳에만 있다.
+     이 페이지에는 D-day 훅이 없다(날짜·일수를 쓰지 않는다). -->
 <script src="app.js"></script>
+<script>
+/* app.js 보조 — 날짜를 계산하지 않는다. */
+(function(){
+  /* 햄버거 aria-expanded.
+     app.js 의 hamb.onclick 을 덮어쓰지 않고 msheet 의 class 변화만 관찰한다
+     → 열기·닫기(X·링크·배경 클릭) 경로를 모두 반영한다. */
+  var hamb=document.getElementById('hamb'),sheet=document.getElementById('msheet');
+  if(hamb&&sheet&&window.MutationObserver){
+    var sync=function(){hamb.setAttribute('aria-expanded',sheet.classList.contains('open')?'true':'false')};
+    new MutationObserver(sync).observe(sheet,{attributes:true,attributeFilter:['class']});
+    sync();
+  }
+})();
+</script>
 </body>
 </html>
