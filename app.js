@@ -88,6 +88,8 @@ function statCalc(nowMs){
     const io=new IntersectionObserver(es=>{
       if(!es[0].isIntersecting) return; io.disconnect();
       const t0=performance.now(),dur=1100;
+      // 창이 숨겨지면 requestAnimationFrame 이 멈춰 중간값에 머문다 → 시간이 지나면 무조건 최종값으로 맞춘다.
+      setTimeout(()=>{el.textContent=fmt(to)},dur+150);
       (function tick(t){
         const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
         el.textContent=p<1?fmt(Math.round(to*e)):fmt(to);
