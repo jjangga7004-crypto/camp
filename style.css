@@ -557,6 +557,9 @@ h2.hd{font-size:clamp(25px,3.9vw,40px);margin-top:14px}
   font-size:clamp(36px,5.4vw,50px);font-weight:900;letter-spacing:-.04em;line-height:1;
   background:linear-gradient(118deg,var(--ember),var(--deep));-webkit-background-clip:text;background-clip:text;color:transparent
 }
+.stat .big small{font-size:.38em;font-weight:800;letter-spacing:-.01em;margin:0 .16em}
+.stat .big [data-stat]{font-variant-numeric:tabular-nums}
+.statnote{margin-top:14px;max-width:760px}
 .stat .lbl{margin-top:12px;font-size:15px;color:var(--ink-2);font-weight:750}
 .stat .sub{font-size:12.5px;color:var(--mut-2);line-height:1.6}
 

@@ -47,3 +47,54 @@ const SUNEUNG_DATE='2026-11-19';
     document.querySelectorAll('[data-dday-num]').forEach(el=>el.textContent=days);
   }
 })();
+
+/* STATS-BEGIN */
+// 누적 모의고사 응시 횟수(재시험 포함). STAT_BASE_DATE 까지는 학생 점수 시트의 실측이고,
+// 그 뒤 수업일은 요일별 하루 평균으로 자동 가산한 추산이다. 새 집계를 받으면 아래 상수만 고친다.
+const STAT_BASE_DATE='2026-10-24';  // 실측 기준일(이 날 수업까지)
+const STAT_BASE_YEAR=5885;          // 올해 시즌 4/18~기준일 누적(재시험 포함, 점수가 적힌 칸 수)
+const STAT_LAST_YEAR=8101;          // 작년 시즌 전체(재시험 포함, 같은 방식으로 센 값)
+const STAT_STUDENTS=122;            // 올해 점수 시트에 이름이 오른 학생 수
+const STAT_RATE={0:141,3:50,6:192}; // 일·수·토 수업일 하루 평균(2026-08-29~10-24 실측)
+const STAT_END='2026-11-08';        // 30주차 마지막 수업일 — 이후엔 더 늘리지 않는다
+function statCalc(nowMs){
+  const kst=new Date(nowMs+9*36e5);
+  const today=Date.UTC(kst.getUTCFullYear(),kst.getUTCMonth(),kst.getUTCDate());
+  const ymd=s=>{const [y,m,d]=s.split('-').map(Number);return Date.UTC(y,m-1,d);};
+  const end=Math.min(ymd(STAT_END),today-864e5); // 끝난 수업일만 센다(오늘은 제외)
+  let add=0;
+  for(let t=ymd(STAT_BASE_DATE)+864e5;t<=end;t+=864e5) add+=STAT_RATE[new Date(t).getUTCDay()]||0;
+  const year=STAT_BASE_YEAR+add;
+  return {
+    year:Math.round(year/10)*10,
+    five:Math.round((STAT_LAST_YEAR+year)/2*5/100)*100,
+    per:Math.round(year/STAT_STUDENTS),
+    running:today<=ymd(STAT_END)
+  };
+}
+(function(){
+  const els=document.querySelectorAll('[data-stat]');
+  if(!els.length) return;
+  const v=statCalc(Date.now());
+  const fmt=n=>n.toLocaleString('ko-KR');
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [, bm, bd]=STAT_BASE_DATE.split('-').map(Number);
+  document.querySelectorAll('[data-stat-date]').forEach(el=>el.textContent=bm+'월 '+bd+'일');
+  if(!v.running) document.querySelectorAll('[data-stat-note]').forEach(el=>{el.textContent=el.dataset.statNoteDone});
+  els.forEach(el=>{
+    const to=v[el.dataset.stat]; if(to==null) return;
+    el.textContent=fmt(to);
+    if(reduce||!('IntersectionObserver' in window)) return;
+    const io=new IntersectionObserver(es=>{
+      if(!es[0].isIntersecting) return; io.disconnect();
+      const t0=performance.now(),dur=1100;
+      (function tick(t){
+        const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
+        el.textContent=p<1?fmt(Math.round(to*e)):fmt(to);
+        if(p<1) requestAnimationFrame(tick);
+      })(t0);
+    },{threshold:.4});
+    io.observe(el);
+  });
+})();
+/* STATS-END */
