@@ -96,6 +96,7 @@ header.nav.scrolled{border-bottom-color:var(--line);background:rgba(255,255,255,
 @media(max-width:1060px){.nav nav{display:none}.hamb{display:inline-flex}}
 @media(max-width:1260px){.nav nav{gap:17px}}
 .nav .navbtns{display:flex;align-items:center;gap:8px;flex:none}
+@media(max-width:580px){.nav .navbtns .btn:not(.kr){display:none}}
 .msheet{position:fixed;inset:0;z-index:60;background:rgba(30,18,12,.34);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.25s}
 .msheet.open{opacity:1;pointer-events:auto}
 .msheet .card{position:absolute;top:0;right:0;height:100%;width:min(82vw,330px);background:#fff;padding:24px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:.28s}
@@ -356,29 +357,13 @@ footer.ft a{color:var(--deep);font-weight:700}
 <body>
 
 <div class="topbar"><div class="wrap">
-  <span>🔥 <b>김과외 사탐 전국 1위</b></span>
+  <span>📗 <b>불꽃캠프 국어</b></span>
   <span class="dot"></span>
-  <span class="hide-s">2개월+ 평균 1.2등급 ↑</span>
+  <span class="hide-s">수능 국어 만점 4회 · 이어진 선생님</span>
   <span class="dot hide-s"></span>
   <span>한티역 바로 옆</span>
 </div></div>
 
-
-<div class="msheet" id="msheet">
-  <div class="card">
-    <button class="x" id="mclose" aria-label="닫기">×</button>
-    <a href="#why">왜 8시간</a>
-    <a href="#course">2단계 코스</a>
-    <a href="#compare">인강 비교</a>
-    <a href="#loop">진행 방식</a>
-    <a href="#content">자체 콘텐츠</a>
-    <a href="#data">작년 데이터</a>
-    <a href="#parents">학부모님께</a>
-    <a href="korean.html" class="krlink">📗 불꽃캠프 국어</a>
-    <a href="#info">시간표·수강료</a>
-    <a href="#apply" class="btn">전화상담 신청</a>
-  </div>
-</div>
 
 <header class="nav" id="nav">
   <div class="wrap">
@@ -407,7 +392,6 @@ footer.ft a{color:var(--deep);font-weight:700}
     <a href="parents.html">학부모님께</a>
     <a href="info.html">시간표·수강료</a>
     <a href="korean.html" class="krlink">📗 불꽃캠프 국어</a>
-    <a href="info.html">시간표·수강료</a>
     <a href="https://dune-teal-3ad.notion.site/d9f8cd6d2b514989b4f78d275456f785" target="_blank" rel="noopener" class="btn">전화상담 신청</a>
   </div>
 </div>
