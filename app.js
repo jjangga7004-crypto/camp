@@ -51,12 +51,12 @@ const SUNEUNG_DATE='2026-11-19';
 /* STATS-BEGIN */
 // 누적 모의고사 응시 횟수(재시험 포함). STAT_BASE_DATE 까지는 학생 점수 시트의 실측이고,
 // 그 뒤 수업일은 요일별 하루 평균으로 자동 가산한 추산이다. 새 집계를 받으면 아래 상수만 고친다.
-const STAT_BASE_DATE='2026-10-24';  // 실측 기준일(이 날 수업까지)
-const STAT_BASE_YEAR=5885;          // 올해 시즌 4/18~기준일 누적(재시험 포함, 점수가 적힌 칸 수)
+const STAT_BASE_DATE='2026-11-08';  // 실측 기준일(이 날 수업까지)
+const STAT_BASE_YEAR=6802;          // 올해 시즌 4/18~기준일 누적(재시험 포함, 점수가 적힌 칸 수)
 const STAT_LAST_YEAR=8101;          // 작년 시즌 전체(재시험 포함, 같은 방식으로 센 값)
-const STAT_STUDENTS=122;            // 올해 점수 시트에 이름이 오른 학생 수
-const STAT_RATE={0:141,3:50,6:192}; // 일·수·토 수업일 하루 평균(2026-08-29~10-24 실측)
-const STAT_END='2026-11-08';        // 30주차 마지막 수업일 — 이후엔 더 늘리지 않는다
+const STAT_STUDENTS=129;            // 올해 점수 시트에 이름이 오른 학생 수
+const STAT_RATE={0:148,3:52,6:181}; // 일·수·토 수업일 하루 평균(2026-09-12~11-08 실측)
+const STAT_END='2026-11-15';        // 올해 마지막 수업일(수능 주 일요일, 장T 확인 2026-11-12) — 이후엔 더 늘리지 않는다
 function statCalc(nowMs){
   const kst=new Date(nowMs+9*36e5);
   const today=Date.UTC(kst.getUTCFullYear(),kst.getUTCMonth(),kst.getUTCDate());
